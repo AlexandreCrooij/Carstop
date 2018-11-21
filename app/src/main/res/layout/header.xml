@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@drawable/headerbackground"
+    android:background="@drawable/headbackground"
     android:padding="20dp">
 
     <ImageView

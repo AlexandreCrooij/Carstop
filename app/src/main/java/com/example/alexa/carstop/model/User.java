@@ -5,5 +5,4 @@ public interface User {
     String getFirstname();
     String getLastname();
     String getEmail();
-    String getPassword();
 }

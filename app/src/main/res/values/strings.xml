@@ -19,5 +19,10 @@
     <string name="incorrect_pw">Incorrect password</string>
     <string name="notMatch">Password does not match</string>
 
+    <!-- Register activity -->
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="addUser">User added</string>
+
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.alexa.carstop.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -29,7 +30,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private final String TAG = "MainActivity";
     private final String BACK_STACK_ROOT_TAG = "MAIN";
 
+    public static final String PREFS_NAME = "SharedPrefs";
+    public static final String PREFS_NAME_USER = "SharedPrefsAthlete";
+    public static final String PREFS_USER = "LoggedIn";
+    public static final String PREFS_USER_FIRSTNAME = "LoggedInFirstname";
+    public static final String PREFS_USER_LASTNAME = "LoggedInLastname";
+    public static final String PREFS_USER_UID = "LoggedInUID";
+    public static final String PREFS_ADM = "UserPermission";
+    public static final String PREFS_LNG = "Language";
+
     private DrawerLayout drawerLayout;
+    private String user_email;
+    private String user_firstname;
+    private String user_lastname;
     private ActionBarDrawerToggle myToggle;
     private DatabaseReference mDatabase;
 
@@ -38,6 +51,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        //get name, email and isAdmin
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.PREFS_NAME_USER, 0);
+        user_email = sharedPreferences.getString(MainActivity.PREFS_USER, null);
+        user_firstname = sharedPreferences.getString(MainActivity.PREFS_USER_FIRSTNAME, null);
+        user_lastname = sharedPreferences.getString(MainActivity.PREFS_USER_LASTNAME, null);
 
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.dashboard));
@@ -48,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        myToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.dashboard, R.string.dashboard);
+        myToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(myToggle);
         myToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -71,8 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View headerView = navigationView.getHeaderView(0);
         TextView name = (TextView) headerView.findViewById(R.id.lbl_name);
         TextView email = (TextView) headerView.findViewById(R.id.lbl_email);
-        String username = "Mathis Fux";
-        String user_email = "mathis.fux@gmx.ch";
+        String username = user_firstname + " " + user_lastname;
         name.setText(username);
         email.setText(user_email);
         navigationView.setNavigationItemSelectedListener(MainActivity.this);
@@ -106,17 +124,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Log.e(TAG, e.getMessage(), e);
         }
 
-        /* change Fragment
         fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(BACK_STACK_ROOT_TAG).commit();
         getSupportActionBar().setTitle(fragmentTag);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        */
         return true;
     }
 
     private void logout() {
+        //remove the stored preference for the next login
+        SharedPreferences.Editor editor = getSharedPreferences(MainActivity.PREFS_NAME_USER, 0).edit();
+        editor.remove(PREFS_USER);
+        editor.remove(PREFS_USER_FIRSTNAME);
+        editor.remove(PREFS_USER_LASTNAME);
+        editor.remove(PREFS_ADM);
+        editor.remove(PREFS_USER_UID);
+        editor.apply();
 
+        //start login activity
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

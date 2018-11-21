@@ -15,7 +15,6 @@ public class UserEntity implements User {
     private String firstname;
     private String lastname;
     private String email;
-    private String password;
 
     public UserEntity(){
 
@@ -26,7 +25,6 @@ public class UserEntity implements User {
         firstname = user.getFirstname();
         lastname = user.getLastname();
         email = user.getEmail();
-        password = user.getPassword();
     }
 
     @Override
@@ -63,15 +61,6 @@ public class UserEntity implements User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override

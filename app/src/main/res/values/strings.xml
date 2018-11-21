@@ -5,4 +5,19 @@
     <string name="dashboard">Dashboard</string>
     <string name="settings">Settings</string>
     <string name="logout">Logout</string>
+
+    <!-- Login activity -->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="noAccount">No account yet? Create one</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="invalide_pw">Invalid password. Requires more than 4 characters</string>
+    <string name="required">Email is required</string>
+    <string name="requiredAll">All field are required</string>
+    <string name="invalid_email">You have input a invalid email</string>
+    <string name="incorrect_pw">Incorrect password</string>
+    <string name="notMatch">Password does not match</string>
+
+
 </resources>

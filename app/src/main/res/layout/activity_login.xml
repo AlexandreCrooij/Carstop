@@ -29,14 +29,17 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
+            android:textColor="@android:color/white"
             android:textColorHint="#c5c5c5" />
 
-            <EditText android:id="@+id/tv_password_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="@string/password"
-                android:textColorHint="#c5c5c5"/>
+        <EditText
+            android:id="@+id/tv_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@android:color/white"
+            android:textColorHint="#c5c5c5" />
 
         <Button
             android:id="@+id/btn_login"

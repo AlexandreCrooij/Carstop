@@ -20,4 +20,8 @@
     <string name="notMatch">Password does not match</string>
 
 
+    <!-- Start Trip activity -->
+    <string name="startTrip">Start the trip</string>
+
+
 </resources>

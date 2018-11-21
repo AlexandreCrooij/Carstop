@@ -25,4 +25,8 @@
     <string name="addUser">User added</string>
 
 
+    <!-- Start Trip activity -->
+    <string name="startTrip">Start the trip</string>
+
+
 </resources>

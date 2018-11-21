@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@drawable/main">
 
     <LinearLayout
         android:orientation="vertical"
@@ -10,44 +11,57 @@
         android:layout_height="wrap_content"
         android:paddingTop="56dp"
         android:paddingLeft="@dimen/itemmargin"
-        android:paddingRight="@dimen/itemmargin">
+        android:paddingRight="@dimen/itemmargin"
+        android:background="@drawable/main"
+        android:layout_weight="1"
+        >
 
-        <ImageView android:src="@drawable/login_icon"
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="120dp"
+            android:layout_height="195dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/itemmargin"
-            android:layout_gravity="center_horizontal" />
+            android:src="@drawable/login_icon" />
 
-            <EditText android:id="@+id/tv_email_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="@string/email" />
+        <EditText
+            android:id="@+id/tv_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#c5c5c5" />
 
             <EditText android:id="@+id/tv_password_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="@string/password"/>
+                android:hint="@string/password"
+                android:textColorHint="#c5c5c5"/>
 
         <Button
             android:id="@+id/btn_login"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/itemmargin"
             android:layout_marginBottom="@dimen/itemmargin"
+            android:layout_marginTop="@dimen/itemmargin"
+            android:background="@drawable/button"
             android:padding="@dimen/itemmargin"
-            android:text="@string/login"/>
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/link_signup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/itemmargin"
-            android:text="@string/noAccount"
-            android:gravity="center"
             android:clickable="true"
-            android:textSize="16dip"/>
+            android:gravity="center"
+            android:text="@string/noAccount"
+            android:textColor="@android:color/white"
+            android:textSize="16dip"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </ScrollView>

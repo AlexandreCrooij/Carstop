@@ -22,6 +22,10 @@
 
     <!-- Start Trip activity -->
     <string name="startTrip">Start the trip</string>
+    <string name="uploadImage">Take a photo</string>
+    <string name="createTrip">Confirm</string>
+    <string name="title_activity_start">Start</string>
+    <string name="numbersPlate">Drivers Platenumber</string>
 
 
 </resources>

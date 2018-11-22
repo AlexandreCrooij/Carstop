@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.alexa.carstop.R;
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(myToggle);
         myToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
     @Override
@@ -146,4 +149,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
+    public void onClickBtnStart(View v)
+    {
+        Intent intent = new Intent(MainActivity.this, StartActivity.class);
+        startActivity(intent);
+    }
+
 }

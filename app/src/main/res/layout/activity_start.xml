@@ -71,6 +71,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="25dp"
         android:backgroundTint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:ems="10"
         app:layout_constraintBottom_toTopOf="@+id/btn_confirmTrip"
         app:layout_constraintStart_toStartOf="parent"

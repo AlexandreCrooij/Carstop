@@ -32,5 +32,11 @@
     <string name="title_activity_start">Start</string>
     <string name="numbersPlate">Drivers Platenumber</string>
 
+    <!-- Finish Trip activity -->
+    <string name="finish">Finish</string>
+    <string name="running">Your trip is started</string>
+
+    <!-- Rating Trip activity -->
+    <string name="wasSafe">Was it safe?</string>
 
 </resources>

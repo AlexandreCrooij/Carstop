@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/main"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -12,50 +13,70 @@
         android:paddingLeft="@dimen/itemmargin"
         android:paddingRight="@dimen/itemmargin">
 
-        <ImageView android:src="@drawable/login_icon"
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
+            android:layout_height="88dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/itemmargin"
-            android:layout_gravity="center_horizontal" />
+            android:src="@drawable/login_icon" />
 
-        <EditText android:id="@+id/tv_firstname_register"
+        <EditText
+            android:id="@+id/tv_firstname_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/firstname"
+            android:textColorHint="#c5c5c5"
             android:inputType="textEmailAddress"
-            android:hint="@string/firstname" />
+            android:textColor="@android:color/white" />
 
-        <EditText android:id="@+id/tv_lastname_register"
+        <EditText
+            android:id="@+id/tv_lastname_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/lastname"
+            android:textColorHint="#c5c5c5"
             android:inputType="textEmailAddress"
-            android:hint="@string/lastname" />
+            android:textColor="@android:color/white" />
 
-        <EditText android:id="@+id/tv_email_register"
+        <EditText
+            android:id="@+id/tv_email_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:textColorHint="#c5c5c5"
             android:inputType="textEmailAddress"
-            android:hint="@string/email" />
+            android:textColor="@android:color/white" />
 
-        <EditText android:id="@+id/tv_password_register"
+        <EditText
+            android:id="@+id/tv_password_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:textColorHint="#c5c5c5"
             android:inputType="textPassword"
-            android:hint="@string/password"/>
+            android:textColor="@android:color/white" />
 
-        <EditText android:id="@+id/tv_password_c_register"
+        <EditText
+            android:id="@+id/tv_password_c_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:textColorHint="#c5c5c5"
             android:inputType="textPassword"
-            android:hint="@string/password"/>
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/itemmargin"
             android:layout_marginBottom="@dimen/itemmargin"
+            android:layout_marginTop="@dimen/itemmargin"
+            android:background="@drawable/button"
             android:padding="@dimen/itemmargin"
-            android:text="@string/register"/>
+            android:text="@string/register"
+            android:textColorHint="#c5c5c5"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </ScrollView>

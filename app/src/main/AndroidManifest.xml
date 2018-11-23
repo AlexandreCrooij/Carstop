@@ -25,6 +25,7 @@
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
         <activity android:name=".activity.MainActivity" />
+
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +39,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.LoginActivity" />
         </activity>
+
+        <activity android:name=".activity.FinishActivity"></activity>
+
+        <activity android:name=".activity.RatingActivity"></activity>
 
         <activity android:name=".activity.StartActivity"></activity>
     </application>

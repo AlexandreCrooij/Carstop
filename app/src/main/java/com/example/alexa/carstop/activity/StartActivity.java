@@ -100,7 +100,7 @@ public class StartActivity extends AppCompatActivity {
             mProgess.show();
             time = new Date();
             String nameOfPhoto = null;
-            String platenumber = plateNumber.getText().toString();
+            String platenumber = plateNumber.getText().toString().toUpperCase();
             if(bitmap != null){
                 nameOfPhoto = uid+time.getTime();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -174,6 +174,11 @@ public class StartActivity extends AppCompatActivity {
                         }
                     });
             mProgess.dismiss();
+
+            //start finish activity
+            Intent intent = new Intent(this, FinishActivity.class);
+            intent.putExtra("TRIP_ENTITY", tripEntity.getUid());
+            startActivity(intent);
         }
     }
 }

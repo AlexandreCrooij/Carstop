@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main"
-    tools:context=".activity.MainActivity">
+    android:background="@drawable/main">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +35,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_start"
+        android:id="@+id/btn_finish"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +44,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/button"
-        android:onClick="onClickBtnStart"
         android:padding="@dimen/itemmargin"
         android:text="@string/finish"
         android:textColor="@android:color/white"

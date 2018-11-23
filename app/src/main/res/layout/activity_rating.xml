@@ -25,6 +25,7 @@
 
 
         <ImageView
+            android:id="@+id/thumbUp"
             android:layout_width="wrap_content"
             android:layout_height="213dp"
             android:layout_gravity="center_horizontal"
@@ -34,6 +35,7 @@
             android:src="@drawable/thumb_up" />
 
         <ImageView
+            android:id="@+id/thumbDown"
             android:layout_width="wrap_content"
             android:layout_height="213dp"
             android:layout_gravity="center_horizontal"

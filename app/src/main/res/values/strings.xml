@@ -37,6 +37,7 @@
     <string name="running">Your trip is started</string>
 
     <!-- Rating Trip activity -->
+    <string name="rating">Rating</string>
     <string name="wasSafe">Was it safe?</string>
 
 </resources>

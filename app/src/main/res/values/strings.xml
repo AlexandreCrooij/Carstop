@@ -40,4 +40,8 @@
     <string name="rating">Rating</string>
     <string name="wasSafe">Was it safe?</string>
 
+
+    <string name="tripComment">Please write your comments below</string>
+    <string name="submit">Submit</string>
+
 </resources>

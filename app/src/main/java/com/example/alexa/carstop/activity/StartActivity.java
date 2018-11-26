@@ -69,7 +69,7 @@ public class StartActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(MainActivity.PREFS_NAME_USER, 0);
         mStorage = FirebaseStorage.getInstance().getReference();
         uid = sharedPreferences.getString(MainActivity.PREFS_USER_UID, null);
-        dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         setContentView(R.layout.activity_start);
         mProgess = new ProgressDialog(this);
     }

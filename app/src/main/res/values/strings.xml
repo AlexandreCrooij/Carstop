@@ -41,7 +41,7 @@
     <string name="wasSafe">Was it safe?</string>
 
 
-    <string name="tripComment">Please write your comments below</string>
+    <string name="tripComment">Comment the trip</string>
     <string name="submit">Submit</string>
 
 </resources>

@@ -47,5 +47,4 @@
         <activity android:name=".activity.StartActivity"></activity>
         <activity android:name=".activity.NoteActivity"></activity>
     </application>
-
 </manifest>

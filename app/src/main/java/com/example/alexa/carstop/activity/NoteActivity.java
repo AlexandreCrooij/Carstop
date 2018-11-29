@@ -1,6 +1,8 @@
 package com.example.alexa.carstop.activity;
 
 import com.example.alexa.carstop.R;
+
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -83,11 +85,20 @@ public class NoteActivity extends AppCompatActivity {
                                         System.out.println(tripEntity);
 
                                         // TODO Next screen or intent
-                                        Toast.makeText(getBaseContext(),"Thank you for your comments", Toast.LENGTH_LONG).show();
-                                        finish();
+                                      //  Toast.makeText(getBaseContext(),"Thank you for your comments", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(),"Thank you for your comments", Toast.LENGTH_LONG).show();
+                                        //finish();
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+
+
+
+
+
 
 
                                     }
+
                                 }
 
                                 @Override
@@ -95,6 +106,7 @@ public class NoteActivity extends AppCompatActivity {
                                     Log.e(TAG, "fail");
                                 }
                             });
+
                 }
             }
         });

@@ -55,16 +55,10 @@ public class NoteActivity extends AppCompatActivity {
 
                 final String note = editTextNote.getText().toString();
 
-                if(note.isEmpty()){
-
-                    Log.e(TAG, "String Note is empty" );
-                }
-                if(editTextNote.getText().toString().isEmpty()){
+                if(editTextNote.getText().toString().equalsIgnoreCase("")){
                     Log.e(TAG, "Note is empty" );
-
                 }
                 else {
-
                     FirebaseDatabase.getInstance()
                             .getReference("trips")
                             .child(trip_id)
@@ -88,8 +82,7 @@ public class NoteActivity extends AppCompatActivity {
                                       //  Toast.makeText(getBaseContext(),"Thank you for your comments", Toast.LENGTH_LONG).show();
                                         Toast.makeText(getApplicationContext(),"Thank you for your comments", Toast.LENGTH_LONG).show();
                                         //finish();
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(intent);
+
 
 
 
@@ -108,6 +101,8 @@ public class NoteActivity extends AppCompatActivity {
                             });
 
                 }
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 

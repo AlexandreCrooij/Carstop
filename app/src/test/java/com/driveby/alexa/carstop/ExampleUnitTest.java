@@ -1,4 +1,4 @@
-package com.example.alexa.carstop;
+package com.driveby.alexa.carstop;
 
 import org.junit.Test;
 

@@ -1,8 +1,6 @@
-package com.example.alexa.carstop.entitiy;
+package com.driveby.alexa.carstop.entitiy;
 
 import android.support.annotation.NonNull;
-
-import java.util.Date;
 
 public class TripEntity {
     @NonNull

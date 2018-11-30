@@ -1,4 +1,4 @@
-package com.example.alexa.carstop.model;
+package com.driveby.alexa.carstop.model;
 
 public interface User {
     String getUid();

@@ -1,4 +1,4 @@
-package com.example.alexa.carstop.activity;
+package com.driveby.alexa.carstop.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.alexa.carstop.entitiy.UserEntity;
+import com.driveby.alexa.carstop.entitiy.UserEntity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,7 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.example.alexa.carstop.R;
+import com.driveby.alexa.carstop.R;
 
 import java.util.Locale;
 

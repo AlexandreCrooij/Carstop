@@ -1,8 +1,8 @@
-package com.example.alexa.carstop.entitiy;
+package com.driveby.alexa.carstop.entitiy;
 
 import android.support.annotation.NonNull;
 
-import com.example.alexa.carstop.model.User;
+import com.driveby.alexa.carstop.model.User;
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;

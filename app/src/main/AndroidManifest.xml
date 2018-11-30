@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.alexa.carstop">
+    package="com.driveby.alexa.carstop">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -17,39 +17,39 @@
         android:theme="@style/AppTheme">
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.android.fileprovider"
+            android:authorities="com.driveby.android.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name="com.driveby.alexa.carstop.activity.MainActivity" />
 
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name="com.driveby.alexa.carstop.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.RegisterActivity" android:parentActivityName=".activity.LoginActivity" >
+        <activity android:name="com.driveby.alexa.carstop.activity.RegisterActivity" android:parentActivityName="com.driveby.alexa.carstop.activity.LoginActivity" >
             <!--The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.LoginActivity" />
+                android:value="com.driveby.alexa.carstop.activity.LoginActivity" />
         </activity>
 
-        <activity android:name=".activity.FinishActivity"></activity>
+        <activity android:name="com.driveby.alexa.carstop.activity.FinishActivity"></activity>
 
-        <activity android:name=".activity.RatingActivity"></activity>
+        <activity android:name="com.driveby.alexa.carstop.activity.RatingActivity"></activity>
 
-        <activity android:name=".activity.StartActivity" android:parentActivityName=".activity.MainActivity">
+        <activity android:name="com.driveby.alexa.carstop.activity.StartActivity" android:parentActivityName="com.driveby.alexa.carstop.activity.MainActivity">
             <!--The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.MainActivity" />
+                android:value="com.driveby.alexa.carstop.activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.NoteActivity"></activity>
+        <activity android:name="com.driveby.alexa.carstop.activity.NoteActivity"></activity>
     </application>
 </manifest>

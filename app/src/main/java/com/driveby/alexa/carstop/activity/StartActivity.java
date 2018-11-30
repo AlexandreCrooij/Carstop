@@ -1,33 +1,27 @@
-package com.example.alexa.carstop.activity;
+package com.driveby.alexa.carstop.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.alexa.carstop.entitiy.CarEntity;
-import com.example.alexa.carstop.entitiy.TripEntity;
-import com.example.alexa.carstop.entitiy.UserEntity;
+import com.driveby.alexa.carstop.entitiy.CarEntity;
+import com.driveby.alexa.carstop.entitiy.TripEntity;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.example.alexa.carstop.R;
+import com.driveby.alexa.carstop.R;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -35,15 +29,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Calendar;
 import java.util.UUID;
-
-import static com.example.alexa.carstop.activity.MainActivity.PREFS_USER_UID;
 
 public class StartActivity extends AppCompatActivity {
 

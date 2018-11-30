@@ -1,6 +1,6 @@
-package com.example.alexa.carstop.activity;
+package com.driveby.alexa.carstop.activity;
 
-import com.example.alexa.carstop.R;
+import com.driveby.alexa.carstop.R;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-import com.example.alexa.carstop.entitiy.TripEntity;
+import com.driveby.alexa.carstop.entitiy.TripEntity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -15,6 +15,7 @@ public class UserEntity implements User {
     private String firstname;
     private String lastname;
     private String email;
+    private String phone;
 
     public UserEntity(){
 
@@ -61,6 +62,16 @@ public class UserEntity implements User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    @Override
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override

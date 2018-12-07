@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,6 +44,9 @@ public class RegisterActivity extends AppCompatActivity {
                 EditText tv_password = (EditText) findViewById(R.id.tv_password_register);
                 EditText tv_check = (EditText) findViewById(R.id.tv_password_c_register);
 
+                EditText tv_phone = (EditText) findViewById(R.id.tv_phone_register);
+                final String phone = tv_phone.getText().toString();
+
                 final String firstname = tv_firstname.getText().toString();
                 final String lastname = tv_lastname.getText().toString();
                 final String email = tv_email.getText().toString();
@@ -54,63 +58,80 @@ public class RegisterActivity extends AppCompatActivity {
                 tv_email.setError(null);
                 tv_password.setError(null);
 
-                if(!firstname.equals("") && !lastname.equals("") && !email.equals("") && !password.equals("") && !pw_check.equals("")){
+                if(!firstname.equals("") && !lastname.equals("") && !email.equals("") && !password.equals("") && !pw_check.equals("") &&  !phone.equals("")){
                     //every field filled out
                     if(isEmailValid(email)){
                         //email valid
-                        if(password.equals(pw_check)){
-                            //pw are equals
-                            if(isPasswordValid(password)){
-                                //pw is valid
-                                FirebaseDatabase.getInstance()
-                                        .getReference("users")
-                                        .addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                                if (dataSnapshot.exists()) {
-                                                    boolean exists = false;
 
-                                                    for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                                                        UserEntity entity = childSnapshot.getValue(UserEntity.class);
-                                                        entity.setUid(childSnapshot.getKey());
-                                                        if(entity.getEmail().equalsIgnoreCase(email)){
-                                                            exists = true;
-                                                            break;
+                        //phone validation
+                        if(isPhoneValid(phone)) {
+
+                            if (password.equals(pw_check)) {
+                                //pw are equals
+                                if (isPasswordValid(password)) {
+                                    //pw is valid
+                                    FirebaseDatabase.getInstance()
+                                            .getReference("users")
+                                            .addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    if (dataSnapshot.exists()) {
+                                                        boolean exists = false;
+
+                                                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                                                            UserEntity entity = childSnapshot.getValue(UserEntity.class);
+                                                            entity.setUid(childSnapshot.getKey());
+                                                            if (entity.getEmail().equalsIgnoreCase(email)) {
+                                                                exists = true;
+                                                                break;
+                                                            }
+                                                        }
+
+                                                        if (!exists) {
+                                                            //user doesn't exists
+                                                            //addUser(firstname, lastname, email, password);
+                                                            UserEntity userEntity = new UserEntity();
+                                                            userEntity.setFirstname(firstname);
+                                                            userEntity.setLastname(lastname);
+                                                            userEntity.setEmail(email);
+                                                            userEntity.setPhone(phone);
+                                                            addUser(userEntity);
                                                         }
                                                     }
-
-                                                    if(!exists){
-                                                        //user doesn't exists
-                                                        //addUser(firstname, lastname, email, password);
-                                                        UserEntity userEntity = new UserEntity();
-                                                        userEntity.setFirstname(firstname);
-                                                        userEntity.setLastname(lastname);
-                                                        userEntity.setEmail(email);
-                                                        addUser(userEntity);
-                                                    }
                                                 }
-                                            }
 
-                                            @Override
-                                            public void onCancelled(DatabaseError databaseError) {
-                                                Log.d(TAG, "getAll: onCancelled", databaseError.toException());
-                                            }
-                                        });
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+                                                    Log.d(TAG, "getAll: onCancelled", databaseError.toException());
+                                                }
+                                            });
+                                } else {
+                                    tv_password.setError(getString(R.string.invalide_pw));
+                                    tv_password.setText("");
+                                    tv_check.setText("");
+                                    focusView = tv_password;
+                                    focusView.requestFocus();
+                                }
                             } else {
-                                tv_password.setError(getString(R.string.invalide_pw));
+                                //pw aren't equals
+                                tv_password.setError(getString(R.string.notMatch));
                                 tv_password.setText("");
                                 tv_check.setText("");
                                 focusView = tv_password;
                                 focusView.requestFocus();
                             }
+                            // phone pattern not matching
                         } else {
-                            //pw aren't equals
-                            tv_password.setError(getString(R.string.notMatch));
-                            tv_password.setText("");
-                            tv_check.setText("");
-                            focusView = tv_password;
+                            if(phone.length() != 9){
+                                tv_phone.setError("Please check the length");
+                            }
+                            else{
+                                tv_phone.setError("Check the number");
+                            }
+                            focusView = tv_phone;
                             focusView.requestFocus();
                         }
+
                     } else {
                         tv_email.setError(getString(R.string.invalid_email));
                         focusView = tv_email;
@@ -179,6 +200,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isEmailValid(String email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private boolean isPhoneValid(String phone){
+
+        return (Patterns.PHONE.matcher(phone).matches() && phone.length() == 9) ;
     }
 
     private boolean isPasswordValid(String password) {

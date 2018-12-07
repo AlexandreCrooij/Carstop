@@ -43,5 +43,9 @@
 
     <string name="tripComment">Comment the trip</string>
     <string name="submit">Submit</string>
+    <string name="emergencyphone">Emergency phone for contact</string>
+    <string name="phone">Phone</string>
+    <string name="emergencyTitle">Please enter your contat details in case of Emergency</string>
+    <string name="emergencyDetails">Emergency Contact Details</string>
 
 </resources>

@@ -1,22 +1,29 @@
 package com.driveby.alexa.carstop.activity;
 
 import android.Manifest;
-import android.content.ContentResolver;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.driveby.alexa.carstop.R;
@@ -26,7 +33,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,6 +45,82 @@ public class FinishActivity extends AppCompatActivity {
     private DateFormat dateFormat;
     private String trip_id;
 
+    private String message = "Mathis Fux eats a Gipfeli";
+    private String telNr = "+41795173505";
+    private int my_permission_request_send_sms = 1;
+    private static final int REQUEST_READ_PHONE_STATE= 1;
+
+    private String mySentMessage = "SMS_SENT";
+    private String delivered = "SMS_DELIVERED";
+
+    private PendingIntent sentPI;
+    private PendingIntent deliveredPI;
+    private BroadcastReceiver smsSendReceiver;
+    private BroadcastReceiver smsDeliveredReciever;
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_READ_PHONE_STATE:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    //Toast.makeText(FinishActivity.this, "Granted!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        smsSendReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                switch(getResultCode()){
+                    case Activity.RESULT_OK:
+                        Toast.makeText(FinishActivity.this, "SMS Sent!", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                        Toast.makeText(FinishActivity.this, "Generic failure!", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case SmsManager.RESULT_ERROR_NO_SERVICE:
+                        Toast.makeText(FinishActivity.this, "No service!", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case SmsManager.RESULT_ERROR_NULL_PDU:
+                        Toast.makeText(FinishActivity.this, "Null PDU!", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case SmsManager.RESULT_ERROR_RADIO_OFF:
+                        Toast.makeText(FinishActivity.this, "Radio off!", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        };
+
+        smsDeliveredReciever = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                switch(getResultCode()){
+                    case Activity.RESULT_OK:
+                        Toast.makeText(FinishActivity.this, "SMS delivered!", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case Activity.RESULT_CANCELED:
+                        Toast.makeText(FinishActivity.this, "SMS not delivered!", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        };
+
+        registerReceiver(smsSendReceiver, new IntentFilter(mySentMessage));
+        registerReceiver(smsDeliveredReciever, new IntentFilter(delivered));
+    }
+
 
 
     @Override
@@ -50,6 +132,57 @@ public class FinishActivity extends AppCompatActivity {
 
         dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
+        //Important for SMS-Feedback
+        Intent sendIntent = new Intent(mySentMessage);
+        Intent deliveredIntent = new Intent(delivered);
+        sentPI = PendingIntent.getBroadcast(this, 0, sendIntent,0);
+        deliveredPI = PendingIntent.getBroadcast(this, 0 , deliveredIntent, 0);
+
+        
+        ImageView emergency = (ImageView)findViewById(R.id.emergency);
+        emergency.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+
+                //WINDOW
+                AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(FinishActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(FinishActivity.this);
+                }
+                builder.setTitle("Send alert")
+                        .setMessage("Are you sure you want to send a sms?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                System.out.println("HELLOOOOO");
+                                Log.e(TAG, "HELLOOOO");
+
+                                int permissionCheck = ContextCompat.checkSelfPermission(FinishActivity.this, Manifest.permission.READ_PHONE_STATE);
+
+                                if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                                    ActivityCompat.requestPermissions(FinishActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE}, REQUEST_READ_PHONE_STATE );
+                                } else {
+                                    if(ContextCompat.checkSelfPermission(FinishActivity.this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED){
+                                        ActivityCompat.requestPermissions(FinishActivity.this, new String[]{Manifest.permission.SEND_SMS}, my_permission_request_send_sms);
+                                    }
+                                    else{
+                                        SmsManager sms = SmsManager.getDefault();
+                                        sms.sendTextMessage(telNr, null, message, sentPI, deliveredPI);
+                                    }
+                                }
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }
+        });
+
 
         Button btn_finish = (Button) findViewById(R.id.btn_finish);
         btn_finish.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +190,8 @@ public class FinishActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //start rating activity
+                unregisterReceiver(smsDeliveredReciever);
+                unregisterReceiver(smsSendReceiver);
                 Intent intent = new Intent(v.getContext(), RatingActivity.class);
                 String trip_id = getIntent().getStringExtra("TRIP_ENTITY");
                 intent.putExtra("TRIP_ENTITY", trip_id);
@@ -122,5 +257,7 @@ public class FinishActivity extends AppCompatActivity {
         public void onProviderDisabled(String provider) {
 
         }
+
+
     }
-    }
+}

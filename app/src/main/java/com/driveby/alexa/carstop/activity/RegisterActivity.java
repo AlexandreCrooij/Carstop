@@ -122,7 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             // phone pattern not matching
                         } else {
-                            if(phone.length() != 9){
+                            if(phone.length() != 12){
                                 tv_phone.setError("Please check the length");
                             }
                             else{
@@ -204,7 +204,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isPhoneValid(String phone){
 
-        return (Patterns.PHONE.matcher(phone).matches() && phone.length() == 9) ;
+        return (Patterns.PHONE.matcher(phone).matches() && phone.length() == 12) ;
     }
 
     private boolean isPasswordValid(String password) {

@@ -125,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                                             editor.putString(MainActivity.PREFS_USER_UID, dataSnapshot.getKey());
                                             editor.putString(MainActivity.PREFS_USER_FIRSTNAME, dataSnapshot.getValue(UserEntity.class).getFirstname());
                                             editor.putString(MainActivity.PREFS_USER_LASTNAME, dataSnapshot.getValue(UserEntity.class).getLastname());
+                                            editor.putString(MainActivity.PREFS_USER_EMERGENCY, dataSnapshot.getValue(UserEntity.class).getPhone());
                                             editor.apply();
 
                                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

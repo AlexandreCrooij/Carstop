@@ -26,6 +26,7 @@ public class UserEntity implements User {
         firstname = user.getFirstname();
         lastname = user.getLastname();
         email = user.getEmail();
+        phone = user.getPhone();
     }
 
     @Override
@@ -88,6 +89,7 @@ public class UserEntity implements User {
         HashMap<String, Object> result = new HashMap<>();
         result.put("firstname", firstname);
         result.put("lastname", lastname);
+        result.put("phone", phone);
 
         return result;
     }

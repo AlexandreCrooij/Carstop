@@ -24,6 +24,18 @@
     <string name="lastname">Lastname</string>
     <string name="addUser">User added</string>
 
+    <!-- Settings fragment -->
+    <string name="about_title">About</string>
+    <string name="about">Carstop\nVersion 1.0.0\nCopyright © 2018 Mathis, Anthony, Mayura, Danilo &amp; Alex\nAll rights reserved</string>
+    <string name="chooseLanguage">Choose your language</string>
+    <string name="save">Save</string>
+
+    <!-- Languages -->
+    <string-array name="languages">
+        <item>German</item>
+        <item>English</item>
+        <item>French</item>
+    </string-array>
 
     <!-- Start Trip activity -->
     <string name="startTrip">Start the trip</string>

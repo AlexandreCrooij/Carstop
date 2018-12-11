@@ -9,17 +9,19 @@
 
     <ImageView
         android:id="@+id/imageViewUpload"
-        android:layout_width="@android:dimen/thumbnail_width"
-        android:layout_height="0dp"
+        android:layout_width="194dp"
+        android:layout_height="84dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="39dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/textPassangersAmount"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_takePhoto"
         app:srcCompat="@color/common_google_signin_btn_text_dark_disabled" />
@@ -31,14 +33,15 @@
         android:layout_alignStart="@+id/editTextPlatenumber"
         android:layout_alignLeft="@+id/editTextPlatenumber"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
         android:layout_marginBottom="11dp"
         android:text="@string/numbersPlate"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/editTextPlatenumber"
         app:layout_constraintStart_toStartOf="@+id/editTextPlatenumber"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewUpload" />
+        app:layout_constraintTop_toBottomOf="@+id/amountOfPassengers" />
+
 
     <Button
         android:id="@+id/btn_confirmTrip"
@@ -46,9 +49,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="36dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/button"
         android:onClick="onClickBtnConfirm"
         android:padding="@dimen/itemmargin"
@@ -64,21 +67,22 @@
         android:id="@+id/editTextPlatenumber"
         android:layout_width="289dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="25dp"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/btn_confirmTrip"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -89,10 +93,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="9dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="9dp"
         android:background="@drawable/button"
         android:onClick="onClickBtnImageUpload"
         android:padding="@dimen/itemmargin"
@@ -102,6 +106,36 @@
         app:layout_constraintBottom_toTopOf="@+id/imageViewUpload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+
+    <TextView
+        android:id="@+id/textPassangersAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount of passangers"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/amountOfPassengers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewUpload" />
+
+    <NumberPicker
+        android:id="@+id/amountOfPassengers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPassangersAmount"
+        tools:orientation="horizontal"
+        tools:style="@android:style/Widget.Material.Light.NumberPicker" />
 
 </android.support.constraint.ConstraintLayout>

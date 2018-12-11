@@ -47,5 +47,7 @@
     <string name="phone">Phone</string>
     <string name="emergencyTitle">Please enter your contat details in case of Emergency</string>
     <string name="emergencyDetails">Emergency Contact Details</string>
+    <string name="phone_format">+417912345678</string>
+    <string name="phone_mobile">+41795173505</string>
 
 </resources>

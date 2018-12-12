@@ -99,7 +99,9 @@ public class SettingsFragment extends Fragment {
                     String newEmergency = emergency.getText().toString();
                     changeUserData(newFirstname, newLastname, newEmergency);
                 } else {
-                    Toast.makeText(getContext(), "Wrong Emergency Number", Toast.LENGTH_LONG).show();
+                    String newFirstname = firstname.getText().toString();
+                    String newLastname = lastname.getText().toString();
+                    changeUserData(newFirstname, newLastname, null);
                 }
             }
         });
@@ -152,7 +154,9 @@ public class SettingsFragment extends Fragment {
 
                             entity.setFirstname(newFirstname);
                             entity.setLastname(newLastname);
-                            entity.setPhone(newEmergency);
+                            if(newEmergency != null){
+                                entity.setPhone(newEmergency);
+                            }
 
                             mDatabase.child("users").child(getUID()).updateChildren(entity.toMap());
 

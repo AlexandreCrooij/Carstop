@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Carstop</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+
+    <!-- Login activity -->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="noAccount">No account yet? Create one</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="invalide_pw">Invalid password. Requires more than 4 characters</string>
+    <string name="required">Email is required</string>
+    <string name="requiredAll">All field are required</string>
+    <string name="invalid_email">You have input a invalid email</string>
+    <string name="incorrect_pw">Incorrect password</string>
+    <string name="notMatch">Password does not match</string>
+
+    <!-- Register activity -->
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="addUser">User added</string>
+
+    <!-- Settings fragment -->
+    <string name="about_title">About</string>
+    <string name="about">Carstop\nVersion 1.0.0\nCopyright © 2018 Mathis, Anthony, Mayura, Danilo &amp; Alex\nAll rights reserved</string>
+    <string name="chooseLanguage">Choose your language</string>
+    <string name="save">Save</string>
+
+    <!-- Languages -->
+    <string-array name="languages">
+        <item>German</item>
+        <item>English</item>
+        <item>French</item>
+    </string-array>
+
+    <!-- Start Trip activity -->
+    <string name="startTrip">Start the trip</string>
+    <string name="uploadImage">Take a photo</string>
+    <string name="createTrip">Confirm</string>
+    <string name="title_activity_start">Start</string>
+    <string name="numbersPlate">Drivers Platenumber</string>
+
+    <!-- Finish Trip activity -->
+    <string name="finish">Finish</string>
+    <string name="running">Your trip is started</string>
+
+    <!-- Rating Trip activity -->
+    <string name="rating">Rating</string>
+    <string name="wasSafe">Was it safe?</string>
+
+
+    <string name="tripComment">Comment the trip</string>
+    <string name="submit">Submit</string>
+    <string name="emergencyphone">Emergency phone for contact</string>
+    <string name="phone">Phone</string>
+    <string name="emergencyTitle">Please enter your contat details in case of Emergency</string>
+    <string name="emergencyDetails">Emergency Contact Details</string>
+    <string name="phone_format">+417912345678</string>
+    <string name="phone_mobile">+41795173505</string>
+
+</resources>

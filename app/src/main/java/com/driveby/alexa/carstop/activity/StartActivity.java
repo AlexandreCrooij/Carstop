@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.NumberPicker;
 
 import com.driveby.alexa.carstop.entitiy.CarEntity;
 import com.driveby.alexa.carstop.entitiy.TripEntity;
@@ -43,6 +44,7 @@ public class StartActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private Date time;
     private EditText plateNumber;
+    private int amountOfPassengers;
     private ImageView uploadImage;
     private DateFormat dateFormat;
     private SharedPreferences sharedPreferences;
@@ -50,6 +52,7 @@ public class StartActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private DatabaseReference root;
     private String uid;
+    private NumberPicker numberpicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,16 @@ public class StartActivity extends AppCompatActivity {
         dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         setContentView(R.layout.activity_start);
         mProgess = new ProgressDialog(this);
+
+        numberpicker = (NumberPicker)findViewById(R.id.amountOfPassengers);
+        numberpicker.setMinValue(1);
+        numberpicker.setMaxValue(5);
+        numberpicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                amountOfPassengers = newVal;
+            }
+        });
     }
 
 
@@ -82,6 +95,7 @@ public class StartActivity extends AppCompatActivity {
 
     public void onClickBtnConfirm(View view){
         plateNumber = findViewById(R.id.editTextPlatenumber);
+
         if( TextUtils.isEmpty(plateNumber.getText())){
             plateNumber.setError( "Platenumber is required!" );
         }else{
@@ -114,6 +128,7 @@ public class StartActivity extends AppCompatActivity {
             tripEntity.setIdCar(carEntity.getNumbersplate());
             tripEntity.setIdUser(uid);
             tripEntity.setUid(UUID.randomUUID().toString());
+            tripEntity.setAmountOfPassengers(amountOfPassengers);
             if(nameOfPhoto != null) {
                 tripEntity.setImageUrl(nameOfPhoto);
             }

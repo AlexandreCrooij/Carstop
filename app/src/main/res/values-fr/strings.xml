@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Carstop</string>
+    <string name="open">S\'ouvrir</string>
+    <string name="close">Fermer</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="settings">Réglages</string>
+    <string name="logout">Déconnexion</string>
+
+    <!-- Login activity -->
+    <string name="email">Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="noAccount">Pas encore de compte ? Créez-en un</string>
+    <string name="login">Connexion</string>
+    <string name="register">S\'inscrire</string>
+    <string name="invalide_pw">Mot de passe invalide. Nécessite plus de 4 caractères</string>
+    <string name="required">Email est requis</string>
+    <string name="requiredAll">Tous les champs sont obligatoires</string>
+    <string name="invalid_email">Vous avez saisi un email invalide</string>
+    <string name="incorrect_pw">Mot de passe incorrect</string>
+    <string name="notMatch">Le mot de passe ne correspond pas</string>
+
+    <!-- Register activity -->
+    <string name="firstname">Prénom</string>
+    <string name="lastname">nom du chargement</string>
+    <string name="addUser">Utilisateur ajouté</string>
+
+    <!-- Settings fragment -->
+    <string name="about_title">A propos de</string>
+    <string name="about">Carstop\nVersion 1.0.0\nCopyright © 2018 Mathis, Anthony, Mayura, Danilo &amp; Alex\Tous droits réservés</string>
+    <string name="chooseLanguage">Choisissez votre langue</string>
+    <string name="save">Sauvegarder</string>
+
+    <!-- Languages -->
+    <string-array name="languages">
+        <item>Allemand</item>
+        <item>Anglais</item>
+        <item>Français</item>
+    </string-array>
+
+    <!-- Start Trip activity -->
+    <string name="startTrip">Commencez le voyage</string>
+    <string name="uploadImage">Prendre une photo</string>
+    <string name="createTrip">Confirmer</string>
+    <string name="title_activity_start">Début</string>
+    <string name="numbersPlate">Numéro de plaque du chauffeur</string>
+
+    <!-- Finish Trip activity -->
+    <string name="finish">Finition</string>
+    <string name="running">Votre voyage commence</string>
+
+    <!-- Rating Trip activity -->
+    <string name="rating">Cote</string>
+    <string name="wasSafe">C\'était sans danger ?</string>
+
+
+    <string name="tripComment">Commenter le voyage</string>
+    <string name="submit">Soumettre</string>
+    <string name="emergencyphone">Téléphone d\'urgence à contacter</string>
+    <string name="phone">Téléphoner</string>
+    <string name="emergencyTitle">Veuillez entrer vos coordonnées en cas d\'urgence</string>
+    <string name="emergencyDetails">Coordonnées en cas d\'urgence</string>
+    <string name="phone_format">+417912345678</string>
+    <string name="phone_mobile">+41795173505</string>
+
+</resources>

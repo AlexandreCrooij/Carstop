@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String PREFS_USER_FIRSTNAME = "LoggedInFirstname";
     public static final String PREFS_USER_LASTNAME = "LoggedInLastname";
     public static final String PREFS_USER_UID = "LoggedInUID";
+    public static final String PREFS_USER_EMERGENCY = "LoggedInEmergency";
     public static final String PREFS_ADM = "UserPermission";
     public static final String PREFS_LNG = "Language";
 

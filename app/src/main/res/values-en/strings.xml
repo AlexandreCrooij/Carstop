@@ -37,9 +37,6 @@
         <item>French</item>
     </string-array>
 
-    <!-- Main Trip activity -->
-    <string name="seePickupPoints">See pickup points</string>
-
     <!-- Start Trip activity -->
     <string name="startTrip">Start the trip</string>
     <string name="uploadImage">Take a photo</string>
@@ -58,7 +55,6 @@
 
     <string name="tripComment">Comment the trip</string>
     <string name="submit">Submit</string>
-    <string name="title_activity_maps">Map</string>
     <string name="emergencyphone">Emergency phone for contact</string>
     <string name="phone">Phone</string>
     <string name="emergencyTitle">Please enter your contat details in case of Emergency</string>

@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Carstop</string>
+    <string name="open">Öffnen</string>
+    <string name="close">Schliessen</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="settings">Einstellungen</string>
+    <string name="logout">Abmelden</string>
+
+    <!-- Login activity -->
+    <string name="email">Email</string>
+    <string name="password">Passwort</string>
+    <string name="noAccount">Noch kein Konto? erstelle eines</string>
+    <string name="login">Anmelden</string>
+    <string name="register">Registrieren</string>
+    <string name="invalide_pw">Ungültiges Passwort. Benötigt mehr als 4 Zeichen</string>
+    <string name="required">Email ist notwendig</string>
+    <string name="requiredAll">Alle Felder sind notwendig</string>
+    <string name="invalid_email">Sie haben eine falsche Email eingegeben</string>
+    <string name="incorrect_pw">Falsches Passwort</string>
+    <string name="notMatch">Passwort stimmt nicht überein</string>
+
+    <!-- Register activity -->
+    <string name="firstname">Vorname</string>
+    <string name="lastname">Nachname</string>
+    <string name="addUser">Benutzer hinzugefügt</string>
+
+    <!-- Settings fragment -->
+    <string name="about_title">Über</string>
+    <string name="about">Carstop\nVersion 1.0.0\nCopyright © 2018 Mathis, Anthony, Mayura, Danilo &amp; Alex\nAlle Rechte vorbehalten</string>
+    <string name="chooseLanguage">Wähle die Sprache</string>
+    <string name="save">Speichern</string>
+
+    <!-- Languages -->
+    <string-array name="languages">
+        <item>Deutsch</item>
+        <item>Englisch</item>
+        <item>Französisch</item>
+    </string-array>
+
+    <!-- Start Trip activity -->
+    <string name="startTrip">Starte die Fahrt</string>
+    <string name="uploadImage">Ein Foto machen</string>
+    <string name="createTrip">Bestätigen</string>
+    <string name="title_activity_start">Start</string>
+    <string name="numbersPlate">Fahrer Nummerschild</string>
+
+    <!-- Finish Trip activity -->
+    <string name="finish">Beenden</string>
+    <string name="running">Ihre Fahrt ist gestartet</string>
+
+    <!-- Rating Trip activity -->
+    <string name="rating">Bewerten</string>
+    <string name="wasSafe">War es sicher?</string>
+
+
+    <string name="tripComment">Hinterlasse einen Kommentar</string>
+    <string name="submit">Absenden</string>
+    <string name="emergencyphone">Notfallkontakt Nummer</string>
+    <string name="phone">Telefonnummer</string>
+    <string name="emergencyTitle">Bitte geben Sie Ihre Kontaktdaten für den Notfall ein.</string>
+    <string name="emergencyDetails">Kontaktdaten für Notfälle</string>
+    <string name="phone_format">+417912345678</string>
+    <string name="phone_mobile">+41795173505</string>
+
+</resources>

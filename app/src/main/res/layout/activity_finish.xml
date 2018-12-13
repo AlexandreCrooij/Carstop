@@ -12,12 +12,14 @@
 
 
         <ImageView
+            android:id="@+id/emergency"
             android:layout_width="wrap_content"
             android:layout_height="213dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/itemmargin"
+            android:clickable="true"
             android:paddingTop="56dp"
-            android:src="@drawable/trip_logo" />
+            android:src="@drawable/emergency_logo" />
 
         <TextView
             android:id="@+id/textView2"

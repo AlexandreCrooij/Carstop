@@ -12,11 +12,14 @@ public class TripEntity {
     private boolean wasSafe;
     private String startDate;
     private String endDate;
+    private int amountOfPassengers;
 
     public TripEntity() {
     }
 
-    public TripEntity(@NonNull String uid, String imageUrl, String idCar, String idUser, String note, boolean wasSafe, String startDate, String endDate) {
+    public TripEntity(@NonNull String uid, String imageUrl, String idCar,
+                      String idUser, String note, boolean wasSafe,
+                      String startDate, String endDate, int amountOfPassengers) {
         this.uid = uid;
         this.imageUrl = imageUrl;
         this.idCar = idCar;
@@ -25,6 +28,7 @@ public class TripEntity {
         this.wasSafe = wasSafe;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.amountOfPassengers = amountOfPassengers;
     }
 
     @NonNull
@@ -91,4 +95,13 @@ public class TripEntity {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
+
+    public int getAmountOfPassengers() {
+        return amountOfPassengers;
+    }
+
+    public void setAmountOfPassengers(int amountOfPassengers) {
+        this.amountOfPassengers = amountOfPassengers;
+    }
+
 }

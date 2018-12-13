@@ -15,6 +15,7 @@ public class UserEntity implements User {
     private String firstname;
     private String lastname;
     private String email;
+    private String phone;
 
     public UserEntity(){
 
@@ -25,6 +26,7 @@ public class UserEntity implements User {
         firstname = user.getFirstname();
         lastname = user.getLastname();
         email = user.getEmail();
+        phone = user.getPhone();
     }
 
     @Override
@@ -63,6 +65,16 @@ public class UserEntity implements User {
         this.email = email;
     }
 
+
+    @Override
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
@@ -77,6 +89,7 @@ public class UserEntity implements User {
         HashMap<String, Object> result = new HashMap<>();
         result.put("firstname", firstname);
         result.put("lastname", lastname);
+        result.put("phone", phone);
 
         return result;
     }

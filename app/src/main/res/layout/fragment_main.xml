@@ -40,5 +40,22 @@
         android:text="@string/startTrip"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
+<!--
+    <Button
+        android:id="@+id/btn_seeMap"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="127dp"
+        android:background="@drawable/button"
+        android:onClick="onClickBtnSeePickupPoints"
+        android:padding="@dimen/itemmargin"
+        android:text="@string/seePickupPoints"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+-->
 
 </RelativeLayout>

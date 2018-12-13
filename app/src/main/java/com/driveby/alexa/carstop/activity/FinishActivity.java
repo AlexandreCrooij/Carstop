@@ -39,8 +39,6 @@ public class FinishActivity extends AppCompatActivity {
     private DateFormat dateFormat;
     private String trip_id;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

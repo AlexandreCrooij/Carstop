@@ -154,10 +154,6 @@ public class FinishActivity extends AppCompatActivity {
                         .setMessage("Are you sure you want to send a sms?")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-
-                                System.out.println("HELLOOOOO");
-                                Log.e(TAG, "HELLOOOO");
-
                                 int permissionCheck = ContextCompat.checkSelfPermission(FinishActivity.this, Manifest.permission.READ_PHONE_STATE);
 
                                 if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -167,6 +163,7 @@ public class FinishActivity extends AppCompatActivity {
                                         ActivityCompat.requestPermissions(FinishActivity.this, new String[]{Manifest.permission.SEND_SMS}, my_permission_request_send_sms);
                                     }
                                     else{
+                                        Log.e(TAG,"SADSD" + telNr);
                                         SmsManager sms = SmsManager.getDefault();
                                         sms.sendTextMessage(telNr, null, message, sentPI, deliveredPI);
                                     }

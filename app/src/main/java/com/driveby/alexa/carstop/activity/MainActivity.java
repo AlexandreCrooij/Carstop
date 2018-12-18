@@ -153,12 +153,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(MainActivity.this, StartActivity.class);
         startActivity(intent);
     }
-/*
+
     public void onClickBtnSeePickupPoints(View v)
     {
         Intent intent = new Intent(MainActivity.this, MapsActivity.class);
         startActivity(intent);
     }
-    */
+
 
 }

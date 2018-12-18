@@ -30,6 +30,9 @@
     <string name="chooseLanguage">Choisissez votre langue</string>
     <string name="save">Sauvegarder</string>
 
+    <!-- Main Trip activity -->
+    <string name="seePickupPoints">Points de ramassage</string>
+
     <!-- Languages -->
     <string-array name="languages">
         <item>Allemand</item>

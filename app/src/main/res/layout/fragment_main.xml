@@ -40,7 +40,7 @@
         android:text="@string/startTrip"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
-<!--
+
     <Button
         android:id="@+id/btn_seeMap"
         style="@style/Widget.AppCompat.Button"
@@ -56,6 +56,6 @@
         android:text="@string/seePickupPoints"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
--->
+
 
 </RelativeLayout>

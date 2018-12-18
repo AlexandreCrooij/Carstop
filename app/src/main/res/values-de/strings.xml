@@ -44,6 +44,9 @@
     <string name="title_activity_start">Start</string>
     <string name="numbersPlate">Fahrer Nummerschild</string>
 
+    <!-- Main Trip activity -->
+    <string name="seePickupPoints">Pickup Points sehen</string>
+
     <!-- Finish Trip activity -->
     <string name="finish">Beenden</string>
     <string name="running">Ihre Fahrt ist gestartet</string>

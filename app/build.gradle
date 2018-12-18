@@ -7,8 +7,9 @@ android {
         applicationId "com.driveby.alexa.carstop"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 3
-        versionName "3  "
+        targetSdkVersion 26
+        versionCode 4
+        versionName "4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         javaCompileOptions {

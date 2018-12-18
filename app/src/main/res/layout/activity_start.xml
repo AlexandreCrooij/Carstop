@@ -128,6 +128,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:animationCache="true"
+        android:divider="@color/white"
         android:orientation="horizontal"
         android:scrollbars="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -136,6 +138,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textPassangersAmount"
         tools:orientation="horizontal"
-        tools:style="@android:style/Widget.Material.Light.NumberPicker" />
+        tools:style="@android:style/Widget.Material.Light.NumberPicker"
+        tools:targetApi="@color/white" />
 
 </android.support.constraint.ConstraintLayout>

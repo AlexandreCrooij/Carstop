@@ -1,8 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.driveby.alexa.carstop.fragment.SettingsFragment">
+    tools:context="com.driveby.alexa.carstop.fragment.SettingsFragment"
+    android:background="@drawable/main">
 
     <LinearLayout
         android:id="@+id/layout_settings"
@@ -15,9 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/about_title"
-            android:textColor="@android:color/black"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="@dimen/itemmargin"
             android:layout_marginRight="@dimen/itemmargin"/>
 
@@ -26,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/about"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="@dimen/itemmargin"
             android:layout_marginRight="@dimen/itemmargin"/>
 
@@ -38,6 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColorHint="#c5c5c5"
+            android:textColor="#FFFFFF"
             android:inputType="textCapSentences|textPersonName"
             android:hint="@string/firstname"
             android:layout_marginLeft="@dimen/itemmargin"
@@ -48,6 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#c5c5c5"
             android:inputType="textPersonName"
             android:hint="@string/lastname"
             android:layout_marginLeft="@dimen/itemmargin"
@@ -58,6 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColorHint="#c5c5c5"
+            android:textColor="#FFFFFF"
             android:inputType="phone"
             android:hint="@string/phone_mobile"
             android:layout_marginLeft="@dimen/itemmargin"
@@ -78,8 +86,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/itemmargin"
                 android:layout_weight="1"
+                android:textColorHint="#c5c5c5"
+                android:textColor="#FFFFFF"
                 android:text="@string/chooseLanguage"
-                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <Spinner
@@ -99,10 +108,15 @@
             android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/itemmargin"
-            android:layout_marginRight="@dimen/itemmargin"
+            android:padding="@dimen/itemmargin"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@android:color/white"
             android:text="@string/save" />
 
     </LinearLayout>
 
-</FrameLayout>
+</RelativeLayout>

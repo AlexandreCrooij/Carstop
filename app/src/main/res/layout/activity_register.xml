@@ -57,9 +57,8 @@
             android:hint="@string/phone_mobile"
             android:inputType="phone"
             android:maxLength="12"
-
             android:textColor="@android:color/white"
-            tools:textColorHint="#c5c5c5" />
+            android:textColorHint="#c5c5c5" />
 
 
         <EditText

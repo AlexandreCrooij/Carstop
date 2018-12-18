@@ -37,6 +37,9 @@
         <item>French</item>
     </string-array>
 
+    <!-- Main Trip activity -->
+    <string name="seePickupPoints">See pickup points</string>
+
     <!-- Start Trip activity -->
     <string name="startTrip">Start the trip</string>
     <string name="uploadImage">Take a photo</string>
@@ -47,6 +50,7 @@
     <!-- Finish Trip activity -->
     <string name="finish">Finish</string>
     <string name="running">Your trip is started</string>
+    <string name="alert">Send an alert</string>
 
     <!-- Rating Trip activity -->
     <string name="rating">Rating</string>

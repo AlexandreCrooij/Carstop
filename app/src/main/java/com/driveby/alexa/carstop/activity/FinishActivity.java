@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -36,6 +38,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class FinishActivity extends AppCompatActivity {
 
@@ -139,8 +143,8 @@ public class FinishActivity extends AppCompatActivity {
         deliveredPI = PendingIntent.getBroadcast(this, 0 , deliveredIntent, 0);
 
 
-        ImageView emergency = (ImageView)findViewById(R.id.emergency);
-        emergency.setOnClickListener(new View.OnClickListener(){
+        Button btn_alert = (Button)findViewById(R.id.btn_alert);
+        btn_alert.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
 
                 //WINDOW
@@ -219,7 +223,6 @@ public class FinishActivity extends AppCompatActivity {
             final double longitude = loc.getLongitude();
             final double latitude = loc.getLatitude();
             final Date date = new Date();
-
             FirebaseDatabase.getInstance()
                     .getReference("trips")
                     .child(trip_id)
@@ -230,7 +233,6 @@ public class FinishActivity extends AppCompatActivity {
                                 TripEntity tripEntity = dataSnapshot.getValue(TripEntity.class);
                                 dataSnapshot.getRef().child("gps").child(dateFormat.format(date)).child("longitude").setValue(longitude);
                                 dataSnapshot.getRef().child("gps").child(dateFormat.format(date)).child("latitude").setValue(latitude);
-                                System.out.println(tripEntity);
                             }
                         }
                         @Override
@@ -238,6 +240,7 @@ public class FinishActivity extends AppCompatActivity {
                             Log.e(TAG,"fail");
                         }
                     });
+            Toast.makeText(FinishActivity.this, "Logged GPS: "+String.format("%.2f", longitude)+", "+String.format("%.2f", latitude), Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -255,4 +258,4 @@ public class FinishActivity extends AppCompatActivity {
 
         }
     }
-    }
+}

@@ -30,6 +30,9 @@
     <string name="chooseLanguage">Choisissez votre langue</string>
     <string name="save">Sauvegarder</string>
 
+    <!-- Main Trip activity -->
+    <string name="seePickupPoints">Points de ramassage</string>
+
     <!-- Languages -->
     <string-array name="languages">
         <item>Allemand</item>
@@ -47,6 +50,7 @@
     <!-- Finish Trip activity -->
     <string name="finish">Finition</string>
     <string name="running">Votre voyage commence</string>
+    <string name="alert">Envoyer une alerte</string>
 
     <!-- Rating Trip activity -->
     <string name="rating">Cote</string>

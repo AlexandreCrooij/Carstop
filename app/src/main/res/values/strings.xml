@@ -50,6 +50,7 @@
     <!-- Finish Trip activity -->
     <string name="finish">Finish</string>
     <string name="running">Your trip is started</string>
+    <string name="alert">Send an alert</string>
 
     <!-- Rating Trip activity -->
     <string name="rating">Rating</string>

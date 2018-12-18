@@ -50,6 +50,7 @@
     <!-- Finish Trip activity -->
     <string name="finish">Beenden</string>
     <string name="running">Ihre Fahrt ist gestartet</string>
+    <string name="alert">Notruf senden</string>
 
     <!-- Rating Trip activity -->
     <string name="rating">Bewerten</string>

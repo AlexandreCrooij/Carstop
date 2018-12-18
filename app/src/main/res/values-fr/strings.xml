@@ -50,6 +50,7 @@
     <!-- Finish Trip activity -->
     <string name="finish">Finition</string>
     <string name="running">Votre voyage commence</string>
+    <string name="alert">Envoyer une alerte</string>
 
     <!-- Rating Trip activity -->
     <string name="rating">Cote</string>

@@ -130,6 +130,7 @@
         android:layout_centerHorizontal="true"
         android:animationCache="true"
         android:divider="@color/white"
+        android:theme="@style/AppTheme.Picker"
         android:orientation="horizontal"
         android:scrollbars="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -139,6 +140,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textPassangersAmount"
         tools:orientation="horizontal"
         tools:style="@android:style/Widget.Material.Light.NumberPicker"
-        tools:targetApi="@color/white" />
+         />
 
 </android.support.constraint.ConstraintLayout>

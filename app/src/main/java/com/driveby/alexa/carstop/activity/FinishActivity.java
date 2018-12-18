@@ -143,8 +143,8 @@ public class FinishActivity extends AppCompatActivity {
         deliveredPI = PendingIntent.getBroadcast(this, 0 , deliveredIntent, 0);
 
 
-        ImageView emergency = (ImageView)findViewById(R.id.emergency);
-        emergency.setOnClickListener(new View.OnClickListener(){
+        Button btn_alert = (Button)findViewById(R.id.btn_alert);
+        btn_alert.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
 
                 //WINDOW
@@ -258,4 +258,4 @@ public class FinishActivity extends AppCompatActivity {
 
         }
     }
-    }
+}

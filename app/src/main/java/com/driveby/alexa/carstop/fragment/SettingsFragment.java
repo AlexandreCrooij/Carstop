@@ -92,17 +92,34 @@ public class SettingsFragment extends Fragment {
                 }
                 changeLangugae(language);
 
+                //update stored preferences
+                SharedPreferences.Editor preferences = getContext().getSharedPreferences(MainActivity.PREFS_NAME_USER, 0).edit();
+                String newFirstname = "";
+                String newLastname = "";
+                String newEmergency = user_emergency;
+
                 //update the user data
                 if(isPhoneValid(emergency.getText().toString())){
-                    String newFirstname = firstname.getText().toString();
-                    String newLastname = lastname.getText().toString();
-                    String newEmergency = emergency.getText().toString();
+                    newFirstname = firstname.getText().toString();
+                    newLastname = lastname.getText().toString();
+                    newEmergency = emergency.getText().toString();
                     changeUserData(newFirstname, newLastname, newEmergency);
                 } else {
-                    String newFirstname = firstname.getText().toString();
-                    String newLastname = lastname.getText().toString();
+                    newFirstname = firstname.getText().toString();
+                    newLastname = lastname.getText().toString();
                     changeUserData(newFirstname, newLastname, null);
                 }
+
+
+                preferences.putString(MainActivity.PREFS_USER_FIRSTNAME, newFirstname);
+                preferences.putString(MainActivity.PREFS_USER_LASTNAME, newLastname);
+                preferences.putString(MainActivity.PREFS_USER_EMERGENCY, newEmergency);
+
+                preferences.apply();
+
+                //start the main activity
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -135,10 +152,6 @@ public class SettingsFragment extends Fragment {
         sharedPreferences.edit().putString(MainActivity.PREFS_LNG, language).apply();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-
-        //start the main activity
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        startActivity(intent);
     }
 
     public void changeUserData(final String newFirstname, final String newLastname, final String newEmergency){
@@ -159,13 +172,6 @@ public class SettingsFragment extends Fragment {
                             }
 
                             mDatabase.child("users").child(getUID()).updateChildren(entity.toMap());
-
-                            //update stored preferences
-                            SharedPreferences.Editor preferences = getContext().getSharedPreferences(MainActivity.PREFS_NAME_USER, 0).edit();
-                            preferences.putString(MainActivity.PREFS_USER_FIRSTNAME, newFirstname);
-                            preferences.putString(MainActivity.PREFS_USER_LASTNAME, newLastname);
-                            preferences.putString(MainActivity.PREFS_USER_EMERGENCY, newEmergency);
-                            preferences.apply();
                         }
                     }
 

@@ -158,7 +158,7 @@ public class SettingsFragment extends Fragment {
         FirebaseDatabase.getInstance()
                 .getReference("users")
                 .child(getUID())
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {

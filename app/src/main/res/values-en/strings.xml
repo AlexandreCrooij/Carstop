@@ -67,4 +67,9 @@
     <string name="phone_format">+417912345678</string>
     <string name="phone_mobile">+41795173505</string>
 
+    <!-- Statistics Fragment -->
+    <string name="statistics_all">Statistics</string>
+    <string name="statistics_platenumber">Platenumber</string>
+    <string name="statistics_alert">Alert</string>
+
 </resources>

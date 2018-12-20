@@ -11,16 +11,49 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/lbl_about_header"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <Button
+            android:id="@+id/btn_statistics_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="STATISTICS"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:layout_marginLeft="@dimen/itemmargin"
-            android:layout_marginRight="@dimen/itemmargin"/>
+            android:padding="@dimen/itemmargin"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@android:color/white"
+            android:text="@string/statistics_all" />
+
+
+        <Button
+            android:id="@+id/btn_statistics_platenumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/itemmargin"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@android:color/white"
+            android:text="@string/statistics_platenumber" />
+
+        <Button
+            android:id="@+id/btn_statistics_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/itemmargin"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@android:color/white"
+            android:text="@string/statistics_alert" />
 
     </LinearLayout>
 

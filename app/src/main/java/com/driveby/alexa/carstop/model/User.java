@@ -6,4 +6,5 @@ public interface User {
     String getLastname();
     String getEmail();
     String getPhone();
+    Boolean isAdmin();
 }

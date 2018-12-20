@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.driveby.alexa.carstop.R;
 import com.driveby.alexa.carstop.fragment.MainFragment;
 import com.driveby.alexa.carstop.fragment.SettingsFragment;
+import com.driveby.alexa.carstop.fragment.StatisticsFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String user_email;
     private String user_firstname;
     private String user_lastname;
+    private Boolean isAdmin;
     private ActionBarDrawerToggle myToggle;
     private DatabaseReference mDatabase;
 
@@ -56,8 +58,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         user_email = sharedPreferences.getString(MainActivity.PREFS_USER, null);
         user_firstname = sharedPreferences.getString(MainActivity.PREFS_USER_FIRSTNAME, null);
         user_lastname = sharedPreferences.getString(MainActivity.PREFS_USER_LASTNAME, null);
+        isAdmin = sharedPreferences.getBoolean(MainActivity.PREFS_ADM, false);
 
-        setContentView(R.layout.activity_main);
+        if(isAdmin){
+            setContentView(R.layout.activity_main_admin);
+        } else {
+            setContentView(R.layout.activity_main);
+        }
+
         setTitle(getString(R.string.dashboard));
 
         //Set the fragment initially
@@ -65,7 +73,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+        if(isAdmin){
+            drawerLayout = findViewById(R.id.drawer_layout_admin);
+        } else {
+            drawerLayout = findViewById(R.id.drawer_layout);
+        }
+
         myToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(myToggle);
         myToggle.syncState();
@@ -113,6 +126,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.settings) {
             fragmentClass = SettingsFragment.class;
             fragmentTag = getString(R.string.settings);
+        } else if (id == R.id.statistic) {
+            System.out.println("TEEEEEEEST" + StatisticsFragment.class);
+            fragmentClass = StatisticsFragment.class;
+            fragmentTag = getString(R.string.statistics);
         } else if (id == R.id.logout) {
             logout();
             return true;
@@ -126,8 +143,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(BACK_STACK_ROOT_TAG).commit();
         getSupportActionBar().setTitle(fragmentTag);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        if(isAdmin){
+            DrawerLayout drawer = findViewById(R.id.drawer_layout_admin);
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+        }
+
         return true;
     }
 

@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.exists()) {
+                                            editor.putBoolean(MainActivity.PREFS_ADM, dataSnapshot.getValue(UserEntity.class).isAdmin());
                                             editor.putString(MainActivity.PREFS_USER, dataSnapshot.getValue(UserEntity.class).getEmail());
                                             editor.putString(MainActivity.PREFS_USER_UID, dataSnapshot.getKey());
                                             editor.putString(MainActivity.PREFS_USER_FIRSTNAME, dataSnapshot.getValue(UserEntity.class).getFirstname());

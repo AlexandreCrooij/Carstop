@@ -16,6 +16,7 @@ public class UserEntity implements User {
     private String lastname;
     private String email;
     private String phone;
+    private Boolean isAdmin;
 
     public UserEntity(){
 
@@ -27,6 +28,7 @@ public class UserEntity implements User {
         lastname = user.getLastname();
         email = user.getEmail();
         phone = user.getPhone();
+        isAdmin = user.isAdmin();
     }
 
     @Override
@@ -65,7 +67,6 @@ public class UserEntity implements User {
         this.email = email;
     }
 
-
     @Override
     public String getPhone() {
         return phone;
@@ -73,6 +74,15 @@ public class UserEntity implements User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public Boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 
     @Override

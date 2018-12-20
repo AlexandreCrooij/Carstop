@@ -95,6 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                             userEntity.setLastname(lastname);
                                                             userEntity.setEmail(email);
                                                             userEntity.setPhone(phone);
+                                                            userEntity.setAdmin(false);
                                                             addUser(userEntity);
                                                         }
                                                     }

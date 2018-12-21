@@ -8,14 +8,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -25,21 +25,27 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.driveby.alexa.carstop.R;
+import com.driveby.alexa.carstop.entitiy.AlertEntitiy;
 import com.driveby.alexa.carstop.entitiy.TripEntity;
+import com.driveby.alexa.carstop.entitiy.UserEntity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.UUID;
+
 
 public class FinishActivity extends AppCompatActivity {
 
@@ -50,7 +56,8 @@ public class FinishActivity extends AppCompatActivity {
     private String trip_id;
 
     private String message = "Mathis Fux eats a Gipfeli";
-    private String telNr = "+41795173505";
+    private String telNr = "+41791234567";
+    private String smsNumber = "";
     private int my_permission_request_send_sms = 1;
     private static final int REQUEST_READ_PHONE_STATE= 1;
 
@@ -61,20 +68,6 @@ public class FinishActivity extends AppCompatActivity {
     private PendingIntent deliveredPI;
     private BroadcastReceiver smsSendReceiver;
     private BroadcastReceiver smsDeliveredReciever;
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_READ_PHONE_STATE:
-                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    //Toast.makeText(FinishActivity.this, "Granted!", Toast.LENGTH_SHORT).show();
-                }
-                break;
-
-            default:
-                break;
-        }
-    }
 
     @Override
     protected void onResume() {
@@ -125,8 +118,6 @@ public class FinishActivity extends AppCompatActivity {
         registerReceiver(smsDeliveredReciever, new IntentFilter(delivered));
     }
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,6 +138,26 @@ public class FinishActivity extends AppCompatActivity {
         btn_alert.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
 
+                FirebaseDatabase.getInstance()
+                        .getReference("users")
+                        .child(getUID())
+                        .addValueEventListener(new ValueEventListener() {
+                                                   @Override
+                                                   public void onDataChange(DataSnapshot dataSnapshot) {
+                                                       if (dataSnapshot.exists()) {
+                                                           UserEntity entity = dataSnapshot.getValue(UserEntity.class);
+                                                           smsNumber = String.format("smsto: %s",entity.getPhone());
+                                                       }
+                                                   }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.d(TAG, "getAll: onCancelled", databaseError.toException());
+                            }
+                        });
+
+
+
                 //WINDOW
                 AlertDialog.Builder builder;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -158,6 +169,9 @@ public class FinishActivity extends AppCompatActivity {
                         .setMessage("Are you sure you want to send a sms?")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
+                                /*
+
+                                //SMS WITHIN THE APP
                                 int permissionCheck = ContextCompat.checkSelfPermission(FinishActivity.this, Manifest.permission.READ_PHONE_STATE);
 
                                 if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -172,6 +186,35 @@ public class FinishActivity extends AppCompatActivity {
                                         sms.sendTextMessage(telNr, null, message, sentPI, deliveredPI);
                                     }
                                 }
+                                */
+                                Log.d(TAG, "HEschd du schomal es negerputty gseh");
+
+                                Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+                                // Set the data for the intent as the phone number.
+                                smsIntent.setData(Uri.parse(smsNumber));
+                                // Add the message (sms) with the key ("sms_body").
+                                smsIntent.putExtra("sms_body", message);
+                                // If package resolves (target app installed), send intent.
+                                if (smsIntent.resolveActivity(getPackageManager()) != null) {
+                                    startActivity(smsIntent);
+                                } else {
+                                    Log.d(TAG, "Can't resolve app for ACTION_SENDTO Intent");
+                                }
+
+                                //GET CURRENT DATE
+                                Date myDate = Calendar.getInstance().getTime();
+
+                                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                String formattedDate = df.format(myDate);
+
+                                //LOAD PLATENUMBER FROM INTENT
+                                final String platenumber= getIntent().getStringExtra("TRIP_PLATENUMBER");
+
+                                //TODO INSERT FIREBASE ALERT
+                                AlertEntitiy alert = new AlertEntitiy();
+                                alert.setDate(formattedDate);
+                                alert.setPlatenumber(platenumber);
+                                addAlertInFirebase(alert);
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -214,6 +257,40 @@ public class FinishActivity extends AppCompatActivity {
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 4000, 10, locationListener);
 
+    }
+
+    private String getUID(){
+        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.PREFS_NAME_USER, 0);
+        String uid = sharedPreferences.getString(MainActivity.PREFS_USER_UID, null);
+        return uid;
+    }
+
+    //Adding alert
+    private void addAlertInFirebase(AlertEntitiy alert) {
+        FirebaseDatabase.getInstance()
+                .getReference("alerts")
+                .child(UUID.randomUUID().toString())
+                .setValue(alert, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError != null) {
+                            Log.d(TAG, "Firebase DB Insert failure!", databaseError.toException());
+                            FirebaseDatabase.getInstance().getReference("alerts").child(FirebaseAuth.getInstance().getUid()).removeValue()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(TAG, "Rollback: Alert deleted");
+                                            } else {
+                                                Log.d(TAG, "Rollback: Insertion fail", task.getException());
+                                            }
+                                        }
+                                    });
+                        } else {
+                            Log.d(TAG, "Firebase DB Insert successful!");
+                        }
+                    }
+                });
     }
 
     private class MyLocationListener implements LocationListener {

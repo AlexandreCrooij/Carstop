@@ -182,6 +182,7 @@ public class StartActivity extends AppCompatActivity {
             //start finish activity
             Intent intent = new Intent(this, FinishActivity.class);
             intent.putExtra("TRIP_ENTITY", tripEntity.getUid());
+            intent.putExtra("TRIP_PLATENUMBER", carEntity.getNumbersplate());
             startActivity(intent);
         }
     }

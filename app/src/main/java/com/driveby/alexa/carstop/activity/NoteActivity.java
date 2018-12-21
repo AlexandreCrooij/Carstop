@@ -82,14 +82,6 @@ public class NoteActivity extends AppCompatActivity {
                                       //  Toast.makeText(getBaseContext(),"Thank you for your comments", Toast.LENGTH_LONG).show();
                                         Toast.makeText(getApplicationContext(),"Thank you for your comments", Toast.LENGTH_LONG).show();
                                         //finish();
-
-
-
-
-
-
-
-
                                     }
 
                                 }

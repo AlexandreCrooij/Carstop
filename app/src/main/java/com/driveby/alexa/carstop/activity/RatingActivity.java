@@ -36,13 +36,6 @@ public class RatingActivity extends AppCompatActivity {
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-//                                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-//                                snapshot.getRef().child("wasSafe").setValue(true);
-//
-//                                }
-
-
-                                // Please check this part for the thumbsup ignition
 
                                 if(dataSnapshot.exists()){
 
@@ -50,18 +43,8 @@ public class RatingActivity extends AppCompatActivity {
 
                                     TripEntity tripEntity = dataSnapshot.getValue(TripEntity.class);
                                     dataSnapshot.getRef().child("wasSafe").setValue(true);
-                                    System.out.println(tripEntity);
                                 }
-
-
-
                                 Log.e(TAG, "trip id: "+trip_id );
-                                //TODO: MAYURA REDIRECTION NOTES
-
-
-
-
-
                             }
 
 

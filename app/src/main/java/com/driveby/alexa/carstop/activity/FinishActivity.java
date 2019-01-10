@@ -55,7 +55,7 @@ public class FinishActivity extends AppCompatActivity {
     private DateFormat dateFormat;
     private String trip_id;
 
-    private String message = "Mathis Fux eats a Gipfeli";
+    private String message = "Help me";
     private String telNr = "+41791234567";
     private String smsNumber = "";
     private int my_permission_request_send_sms = 1;

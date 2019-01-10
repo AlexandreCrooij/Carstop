@@ -4,7 +4,7 @@
     <string name="close">Schliessen</string>
     <string name="dashboard">Dashboard</string>
     <string name="settings">Einstellungen</string>
-    <string name="statistics">Statistik</string>
+    <string name="statistics">Berichte</string>
     <string name="logout">Abmelden</string>
 
     <!-- Login activity -->

@@ -71,7 +71,7 @@ public class SettingsFragment extends Fragment {
 
         //use the spinner with the array string of the language
         spinner = (Spinner) view.findViewById(R.id.sp_language);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.languages, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getActivity(), R.array.languages, R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
